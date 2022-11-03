@@ -10,8 +10,6 @@ export default function Home() {
 
   let game: Game = "waiting for input";
 
-  let wordsInDom: Word[] = "sentence to test".split("");
-
   let words: Word[] = "sentence to test".split(" ");
 
   let wordIndex = 0;
@@ -55,9 +53,13 @@ export default function Home() {
       <div className="flex flex-col align-center justify-center h-screen w-fit mx-auto">
         <CountDown startTimer={startTimer} />
         <input type="text" onFocus={onFocus} onChange={handleChange} />
-        <div className="text-center mt-2">
-          {wordsInDom.map((word, index) => (
-            <span key={index}>{word}</span>
+        <div className="words flex text-center mt-2">
+          {words.map((word: string, index: number) => (
+            <div className="word flex px-[2px]" key={index}>
+              {word.split("").map((l: string, index: number) => (
+                <p key={index}>{l}</p>
+              ))}
+            </div>
           ))}
         </div>
       </div>
